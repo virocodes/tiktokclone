@@ -21,13 +21,6 @@ export default async function DashboardPage() {
                 <NextLogo />
               </div>
               <div className="flex items-center gap-2">
-                <OrganizationSwitcher
-                  appearance={{
-                    elements: {
-                      organizationPreviewAvatarBox: "size-6",
-                    },
-                  }}
-                />
                 <UserButton
                   afterSignOutUrl="/"
                   appearance={{
