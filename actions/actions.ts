@@ -191,16 +191,29 @@ export async function updateUserEmbedding(userId: string, likeThreshold: number 
   
     if (likedPosts.length === 0) return;
   
+    // Get current user embedding
+    const currentUser = await db.select().from(users).where(eq(users.id, userId));
+    const currentEmbedding = currentUser[0].embedding;
+
     // Calculate average embedding from liked posts
     const averageEmbedding = likedPosts.reduce((acc, post) => {
       return acc.map((val: number, idx: number) => val + (post.embedding?.[idx] ?? 0));
     }, new Array(1536).fill(0)).map((val: number) => val / likedPosts.length);
+
+    // Learning rate determines how much we move towards the new embedding (0.3 = 30%)
+    const learningRate = 0.3;
+    
+    // Calculate updated embedding as weighted average between current and new
+    const updatedEmbedding = currentEmbedding?.map((currentVal: number, idx: number) => {
+      const targetVal = averageEmbedding[idx];
+      return currentVal + (targetVal - currentVal) * learningRate;
+    });
   
     // Update user's embedding and lastEmbeddingUpdate timestamp
     await db
       .update(users)
       .set({ 
-        embedding: averageEmbedding,
+        embedding: updatedEmbedding,
         lastEmbeddingUpdate: sql`NOW()`
       })
       .where(eq(users.id, userId));
