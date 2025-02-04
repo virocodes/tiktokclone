@@ -96,21 +96,21 @@ export default function VideoFeed({videos: initialVideos}: {videos: any[]}) {
                                     <Button size="icon" variant="ghost" className="rounded-full p-4 border-2">
                                         <MessageCircle className="w-8 h-8" />
                                     </Button>
-                                    <span className="text-sm mt-1">6035</span>
+                                    <span className="text-sm mt-1">0</span>
                                 </div>
 
                                 <div className="flex flex-col items-center">
                                     <Button size="icon" variant="ghost" className="rounded-full p-4 border-2">
                                         <Bookmark className="w-8 h-8" />
                                     </Button>
-                                    <span className="text-sm mt-1">63.7K</span>
+                                    <span className="text-sm mt-1">0</span>
                                 </div>
 
                                 <div className="flex flex-col items-center">
                                     <Button size="icon" variant="ghost" className="rounded-full p-4 border-2">
                                         <Share2 className="w-8 h-8" />
                                     </Button>
-                                    <span className="text-sm mt-1">34.9K</span>
+                                    <span className="text-sm mt-1">0</span>
                                 </div>
                             </div>
                         </div>

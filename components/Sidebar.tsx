@@ -11,7 +11,7 @@ export default function Sidebar() {
       {/* Sidebar */}
       <div className="w-[348px] flex flex-col border-r border-gray-800 p-4">
         <div className="mb-6 ml-1 flex justify-between">
-          <h1 className="text-2xl font-bold">Knota</h1>
+          <h1 className="text-2xl font-bold">TokTik</h1>
           <SignedIn>
             <UserButton />
           </SignedIn>
